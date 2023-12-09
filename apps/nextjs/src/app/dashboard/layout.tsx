@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 type TLaoutProps={
     children:React.ReactNode
 }
