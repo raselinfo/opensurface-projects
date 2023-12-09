@@ -1,14 +1,17 @@
-import Product from "@/components/Product";
-import { Box } from "@stacklearner/spark-ui";
+const getPosts = async () => {
+  const res = await fetch("http://localhost:3000/api/blog/post");
+  return await res.json();
+};
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getPosts();
+
   return (
     <>
-      <Product />
-      <Box >
-
-        <h1>Hello box</h1>
-      </Box>
+      <h1>Home page</h1>
+      {posts.map((post:any) => {
+        return <h4 key={post.id}>{post.title}</h4>;
+      })}
     </>
   );
 }
